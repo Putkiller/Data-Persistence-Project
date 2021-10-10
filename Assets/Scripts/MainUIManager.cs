@@ -12,22 +12,22 @@ public class MainUIManager : MonoBehaviour
 {
 
     
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    //load
     public void StartNew()
     {
         SceneManager.LoadScene(1);
+    }
+
+    //high score list scene
+    public void StartHighScoreScene()
+    {
+        SceneManager.LoadScene(2);
+    }
+
+    //go back to main menu
+    public void StartMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void Exit()

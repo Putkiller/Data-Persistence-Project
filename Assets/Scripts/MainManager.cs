@@ -20,7 +20,6 @@ public class MainManager : MonoBehaviour
     
     private bool m_GameOver = false;
 
-    
 
     //main menu
     //public TextMeshProUGUI highScoreText;
@@ -95,6 +94,8 @@ public class MainManager : MonoBehaviour
         //check to see if it is the new high score
         HighScore.CheckHighScore();
 
+        HighScore.HighScoreList();
+
         //Save High Score
         SaveHighScore();
     }
@@ -104,6 +105,7 @@ public class MainManager : MonoBehaviour
     {
         public int highestScore;
         public string highScoreName;
+        public List<Scores> highScoresList;
     }
 
     public void SaveHighScore()
@@ -111,9 +113,10 @@ public class MainManager : MonoBehaviour
         SaveData data = new SaveData();
         data.highestScore = HighScore.highScore;
         data.highScoreName = HighScore.highScoreName;
+        data.highScoresList = HighScore.highScoresList;
 
         string json = JsonUtility.ToJson(data);
-
+        Debug.Log("json files "+ json);
         File.WriteAllText(Application.persistentDataPath + "/savefile.json",json);
     }
 
@@ -123,10 +126,12 @@ public class MainManager : MonoBehaviour
         if(File.Exists(path))
         {
             string json = File.ReadAllText(path);
+            Debug.Log("json files "+ json);
             SaveData data = JsonUtility.FromJson<SaveData>(json);
 
             HighScore.highScore = data.highestScore;
             HighScore.highScoreName = data.highScoreName;
+            HighScore.highScoresList = data.highScoresList;
         }
     }
 }
