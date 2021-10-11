@@ -118,6 +118,7 @@ public class MainManager : MonoBehaviour
         string json = JsonUtility.ToJson(data);
         Debug.Log("json files "+ json);
         File.WriteAllText(Application.persistentDataPath + "/savefile.json",json);
+        
     }
 
     public void LoadHighScore()

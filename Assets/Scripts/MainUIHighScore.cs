@@ -8,6 +8,7 @@ using System.IO;
 public class MainUIHighScore : MonoBehaviour
 {
     public TextMeshProUGUI[] highScoreTable = new TextMeshProUGUI[5];
+    int indexTable;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +26,8 @@ public class MainUIHighScore : MonoBehaviour
     {
         for (int i = 0; i < HighScore.highScoresList.Count; i++)
         {
-            highScoreTable[i].text = (5-i) + ". " + HighScore.highScoresList[i].name + " " + HighScore.highScoresList[i].score ;
+            indexTable = HighScore.highScoresList.Count - 1 - i;
+            highScoreTable[i].text = (i+1) + ". " + HighScore.highScoresList[indexTable].name + " Score: " + HighScore.highScoresList[indexTable].score ;
         }
     }
 
